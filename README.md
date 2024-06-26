@@ -1,6 +1,6 @@
 # Base de Datos para un Colegio
 
-Este repositorio contiene todo lo necesario para configurar y utilizar una base de datos para un colegio. Incluye scripts para crear tablas, insertar datos, realizar consultas, el diagrama entidad-relación y un archivo de texto con los datos de conexión a la base de datos en la nube.
+Este repositorio contiene todo lo necesario para configurar y utilizar una base de datos relacional y no relacional para un colegio. Incluye scripts para crear tablas, insertar datos, realizar consultas, el diagrama entidad-relación y un archivo de texto con los datos de conexión a la base de datos en la nube.
 
 ## Contenido del Repositorio
 

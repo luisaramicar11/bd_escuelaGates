@@ -1,0 +1,37 @@
+use escuela_db;
+
+db.createCollection("asignaturas");
+db.createCollection("docentes");
+db.createCollection("grupos");
+db.createCollection("estudiantes");
+db.createCollection("asignaturas_grupos");
+
+db.asignaturas.insertOne({"nombre_asignatura":"matematicas"});
+db.asignaturas.insertOne({"nombre_asignatura":"gimnasia"});
+db.asignaturas.insertOne({"nombre_asignatura":"lenguaje"});
+db.asignaturas.insertOne({"nombre_asignatura":"ingles"});
+db.asignaturas.insertOne({"nombre_asignatura":"ciencias"});
+db.asignaturas.insertOne({"nombre_asignatura":"sociales"});
+db.asignaturas.insertOne({"nombre_asignatura":"artistica"});
+
+db.docentes.insertOne({"nombre_docente":"jose", "apellido_docente": "perez", "numero_documento": "101601010151", "tipos_documento": "CC", "fecha_nacimiento": ISODate("2000-11-02")});
+db.docentes.insertOne({"nombre_docente":"juan", "apellido_docente": "torres", "numero_documento": "101001510131", "tipos_documento": "CC", "fecha_nacimiento": ISODate("2000-11-01")});
+db.docentes.insertOne({"nombre_docente":"luisa", "apellido_docente": "ramos", "numero_documento": "101001210181", "tipos_documento": "CC", "fecha_nacimiento": ISODate("2000-10-09")});
+db.docentes.insertOne({"nombre_docente":"olga", "apellido_docente": "lopera",  "numero_documento": "107401210101", "tipos_documento": "PA", "fecha_nacimiento": ISODate("2000-04-09")});
+db.docentes.insertOne({"nombre_docente":"hugo", "apellido_docente": "boss", "numero_documento": "101001210182", "tipos_documento": "PA""fecha_nacimiento": ISODate("2000-11-09")});
+
+db.grupos.insertOne({"nombre_grupo":"A", "grado": "sexto", "jornada": "mañana"});
+db.grupos.insertOne({"nombre_grupo":"A", "grado": "septimo", "jornada": "mañana"});
+db.grupos.insertOne({"nombre_grupo":"C", "grado": "octavo", "jornada": "mañana"});
+db.grupos.insertOne({"nombre_grupo":"D", "grado": "decimo", "jornada": "tarde"});
+db.grupos.insertOne({"nombre_grupo":"B", "grado": "once", "jornada": "tarde"});
+
+db.estudiantes.insertOne({"nombre_estudiante":"lucas", "apellido_estudiante": "ponce",  "numero_documento": "161001210101", "tipos_documento": "TI", "grupo":"A", "grado":"decimo","jornada": "tarde", "fecha_nacimiento": ISODate("2008-11-09")});
+db.estudiantes.insertOne({"nombre_estudiante":"juliana", "apellido_estudiante": "villa",  "numero_documento": "261001210101", "tipos_documento": "TI", "grupo":"A", "grado":"decimo","jornada": "tarde", "fecha_nacimiento": ISODate("2007-11-09")});
+db.estudiantes.insertOne({"nombre_estudiante":"marta", "apellido_estudiante": "fernandez", "numero_documento": "161001210102", "tipos_documento": "TI", "grupo":"D", "grado":"decimo","jornada": "tarde", "fecha_nacimiento": ISODate("2010-11-09")});
+db.estudiantes.insertOne({"nombre_estudiante":"sandra", "apellido_estudiante": "fernandez",  "numero_documento": "161001210102", "tipos_documento": "TI", "grupo":"B", "grado":"once","jornada": "tarde", "fecha_nacimiento": ISODate("2010-11-09")});
+
+db.asignaturas_grupos.insertOne({"asignatura":"sociales", "grupo": "A", "grado":"decimo", "jornada":"tarde", "docente": "1107401210101"});
+db.asignaturas_grupos.insertOne({"asignatura":"matematicas", "grupo": "A", "grado":"decimo", "jornada":"tarde", "docente": "101001510131"});
+db.asignaturas_grupos.insertOne({"asignatura":"ciencias", "grupo": "C", "grado":"octavo", "jornada":"mañana", "docente": "101001210181"});
+db.asignaturas_grupos.insertOne({"asignatura":"ingles", "grupo": "C", "grado":"sexto", "jornada":"mañana", "docente": "107401210101"});

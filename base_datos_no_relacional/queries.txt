@@ -1,0 +1,76 @@
+/*Ver listado de estudiantes de un grupo en especifico*/
+db.estudiantes.find({ $and:[{grado:{$eq:"decimo"}}, {grupo: {$eq:"A"}}]});
+
+/*Ver listado de estudiantes que ven una asignatura en especifico*/
+db.asignaturas_grupos.aggregate([
+  {
+    $match: { asignatura: "matematicas" }
+  },
+  {
+    $lookup: {
+      from: "estudiantes",
+      localField: "grupo",
+      foreignField: "grupo",
+      as: "detalle de los estudiantes"
+    }
+  }
+]).pretty();
+
+
+/*Ver listado de profesores que le dan clase a un estudiante en especifico*/
+db.estudiantes.aggregate([
+  {
+    $match: { numero_documento: "161001210101" }
+  },
+  {
+    $lookup: {
+      from: "asignaturas_grupos",
+      let: { grupo: "$grupo", grado: "$grado", jornada: "$jornada" },
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $and: [
+                { $eq: ["$grupo", "$$grupo"] },
+                { $eq: ["$grado", "$$grado"] },
+                { $eq: ["$jornada", "$$jornada"] }
+              ]
+            }
+          }
+        }
+      ],
+      as: "asignaturas_grupo"
+    }
+  },
+  {
+    $lookup: {
+      from: "docentes",
+      localField: "asignaturas_grupo.docente",
+      foreignField: "numero_documento",
+      as: "docente_info"
+    }
+  }
+]).pretty();
+
+
+/*Ver listado de grupos ordenados en orden descendente por la cantidad de estudiantes inscritos*/
+db.estudiantes.aggregate([
+    {
+      $group: {
+        _id: {
+          grupo: "$grupo",
+          grado: "$grado",
+          jornada: "$jornada"
+        },
+        totalEstudiantes: { $sum: 1 }
+      }
+    },
+    {
+      $sort: { totalEstudiantes: -1 }
+    }
+  ])
+
+  /*Creación de indices*/
+  db.docentes.createIndex({numero_documento:1});
+  var result = db.docentes.find({ numero_documento: "101601010151" }).explain("executionStats")
+  printjson(result)
