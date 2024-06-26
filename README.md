@@ -4,13 +4,11 @@ Este repositorio contiene todo lo necesario para configurar y utilizar una base 
 
 ## Contenido del Repositorio
 
-- **script_tables.sql**: Script SQL para la creación de las tablas de la base de datos.
-- **script_insert.sql**: Script SQL para insertar datos en las tablas.
-- **script_queries.sql**: Ejemplos de consultas SQL para interactuar con la base de datos.
-- **img_base_datos_luisa_escuela.png**: Diagrama entidad-relación de la base de datos.
-- **creacion_datos_conexion_db_luisa.txt**: Archivo de texto con los datos de conexión a la base de datos en la nube.
+- **base_datos_relacional**: Carpeta con base de datos relacional que incluye el diagrama entidad relacional, las tablas, los registros, y las consultas realizadas.
+- **base_datos_no_relacional**: Carpeta con base de datos no relacional que incluye el diagrama optimizado a NoSQL, las colecciones, los dicccionarios , y las consultas realizadas.
 
-## Estructura de la Base de Datos
+
+## Estructura de la Base de Datos relacional
 
 La base de datos está diseñada para gestionar información de un colegio, incluyendo tablas para documentos, docentes, estudiantes, grupos, jornadas, grados y asignaturas.
 
@@ -25,4 +23,14 @@ La base de datos está diseñada para gestionar información de un colegio, incl
 - **asignaturas_grupos**
 - **estudiantes**
 
+## Estructura de la Base de Datos no relacional
 
+La base de datos está diseñada para gestionar información de un colegio, incluyendo las colecciones para docentes, estudiantes, grupos, asignatura_grupos y asignaturas.
+
+### Tablas
+
+- **docentes**
+- **grupos**
+- **asignaturas**
+- **asignaturas_grupos**
+- **estudiantes**
