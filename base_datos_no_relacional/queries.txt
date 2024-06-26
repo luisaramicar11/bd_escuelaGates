@@ -71,6 +71,8 @@ db.estudiantes.aggregate([
   ])
 
   /*Creación de indices*/
+  /*La creación de un indice en la colección docentes puede ser clave para mejorar significativamente el rendimiento de las consultas
+  que buscan docentes basándose en este campo; además de hacer busquedas más eficientes*/
   db.docentes.createIndex({numero_documento:1});
   var result = db.docentes.find({ numero_documento: "101601010151" }).explain("executionStats")
   printjson(result)
